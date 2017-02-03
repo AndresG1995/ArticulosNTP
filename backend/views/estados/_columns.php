@@ -10,10 +10,6 @@ return [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
-        [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'id_estados',
-    ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'nombre_estado',

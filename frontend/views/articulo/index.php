@@ -6,7 +6,8 @@ use kartik\grid\GridView;
 use yii\widgets\Breadcrumbs;
 use johnitvn\ajaxcrud\BulkButtonWidget;
 use yii\bootstrap\Modal;
-
+use frontend\models\Escuelas;
+use frontend\models\Articulo;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\ArticuloSearch */
@@ -18,17 +19,17 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="articulo-index">
   <div id="ajaxCrudDatatable">
 
-    <div class="row">
-      <div class="col-md-2">
+    <div class="row" >
+      <div class="col-md-1">
 
-      <?php   echo Html::a('Crear Articulos', 'create',['class'=>'btn btn-primary btn-md']) ;  ?>
+      <?php   echo Html::a('Crear Articulos', '/yii2_base-master/frontend/web/articulo/create',['class'=>'btn btn-primary btn-md']) ;  ?>
 
       </div>
-      <div class="col-md-10">
+      <div class="col-md-11">
 
         <?php
               Modal::begin([
-                  'header' => '<p>Hello world</p>',
+                  'header' => '<p>Puntajes por Escuela</p>',
                   'headerOptions' => ['class' => 'bg-primary'],
                   'size' => 'modal-lg',
                   //'options' => [ 'class' => 'primary' ],
@@ -36,19 +37,32 @@ $this->params['breadcrumbs'][] = $this->title;
               ]);
          ?>
 
-        <table class="table-hover">
-          <tr class="info">
-            <td>Hola Como Estas</td>
-          </tr>
+        <table class="table table-hover">
+
+         <?php $articulo = Articulo::find()->all(); ?>
+         <?php $escuelas = Escuelas::find()->all(); ?>
+
+         <?php
+           foreach ($escuelas as $key => $escuelas) {
+
+               $totalEscuela =  Articulo::find()->where([ 'id_escuela' => $escuelas->id_escuela])->sum('puntaje_articulo');
+               echo '<tr><th>'.$escuelas->nombre_escuela.': <striong>'.$totalEscuela.'</strong></th></tr>';
+           }
+          ?>
+
+
+
+
         </table>
 
 
         <?php  Modal::end();      ?>
 
       </div>
-    </div>
+    </div><br/>
 
-<br>
+
+
           <?php
 
           echo GridView::widget([
@@ -72,8 +86,8 @@ $this->params['breadcrumbs'][] = $this->title;
               'responsive' => true,
               'panel' => [
                   'type' => 'primary',
-                  'heading' => '<i class="glyphicon glyphicon-list"></i> Listado de consumos',
-                  'before'=>'<em>* Listado de consumos.</em>',
+                  'heading' => '<i class="glyphicon glyphicon-list"></i> Listado de artículos',
+                  'before'=>'<em>*  Listado de artículos.</em>',
 
               ],
               'showPageSummary' => true

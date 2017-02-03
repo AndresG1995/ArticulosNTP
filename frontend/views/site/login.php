@@ -1,9 +1,5 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\models\LoginForm */
-
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
@@ -11,29 +7,39 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
+<div id="login-page">
+        <div class="container-fluid">
+            <?php $form = ActiveForm::begin(['id' => 'login-form', 'options'=>['class' => 'form-login']]); ?>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+                <!--h2 class="form-login-heading">sign in now</h2-->
+                <?=   Html::tag('h2', 'Iniciar Sesión', ['class'=>'form-login-heading']);  ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                <div class="login-wrap">
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                    <?= $form->field($model, 'username')->label('Nombre de Usuario')->textInput(['autofocus' => true, 'placeholder'=>'Nombre de Usuario']) ?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                    <?= $form->field($model, 'password')->label('Contraseña')->passwordInput(['placeholder'=>'Ingrese la contraseña']) ?>
 
-                <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+                    <?= $form->field($model, 'rememberMe')->checkbox() ?>
+
+                    <div style="color:#999;margin:1em 0 ">
+                        If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+                    </div>
+                    <div class="form-group">
+                      <?php
+                      echo Html::tag('button', '<i class="fa fa-user"></i> Login', ['name'=>'btnSubmit','type'=>'submit', 'class' => 'btn btn-theme btn-block'] );
+                       ?>
+                       <br/>
+                      <?= Html::a('Inicio', ['index'], ['class'=>'btn btn-theme btn-warning']) ?>
+                        <!--?= Html::submitButton('Login', ['class' => 'btn btn-theme btn-block', 'name' => 'login-button']) ?-->
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
+
 
             <?php ActiveForm::end(); ?>
         </div>
-    </div>
+        </div>
+
 </div>
