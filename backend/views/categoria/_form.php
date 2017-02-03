@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 /* @var $this yii\web\View */
 /* @var $model backend\models\Categoria */
 /* @var $form yii\widgets\ActiveForm */
@@ -10,7 +11,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <!--<?= $form->field($model, 'id_categoria')->textInput() ?>-->
+    <?= $form->field($model, 'id_categoria')->textInput() ?>
 
     <?= $form->field($model, 'nombre_categoria')->textInput(['maxlength' => true]) ?>
 
