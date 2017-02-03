@@ -9,7 +9,7 @@ $this->title = 'Home';
 
     <div class="jumbotron">
 
-      <?= Html::img(Url::to('/yii2_base-master/frontend/views/site/img/lg.jpg', false), ['alt' => 'My logo', 'width'=>'300']) ?>
+      <?= Html::img(Url::to('/yii2_base-master/frontend/views/site/img/lg.JPG', false), ['alt' => 'My logo', 'width'=>'300']) ?>
 
         <h1>PUCESE</h1>
 

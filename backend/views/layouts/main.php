@@ -14,8 +14,8 @@ AppAsset::register($this);
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
-    <head>
-        <meta charset="<?= Yii::$app->charset ?>">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=big5">
+        charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
@@ -36,12 +36,12 @@ AppAsset::register($this);
 
 
             if (Yii::$app->user->isGuest) {
-                //$menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
+                $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
             } else {
 
 
                 $menuItems[] = [
-                    'label' => 'Administraci籀n',
+                    'label' => 'Administraci車n',
                     'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),
                     'items' => [
                         ['label' => 'Usuarios', 'url' => ['/user/admin/index'],],
@@ -49,19 +49,20 @@ AppAsset::register($this);
                 ];
 
                 $menuItems[] = [
-                    'label' => 'Auditor穩a',
+                    'label' => 'Auditor赤a',
                     'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),
                     'items' => [
                         ['label' => 'Accesos', 'url' => ['/audit/entry'],],
 
                         ['label' => 'Acciones', 'url' => ['/audit/trail'],],
 
-                        ['label' => 'Inicio de sesi籀n', 'url' => ['/logs/index'],],
+                        ['label' => 'Inicio de sesi車n', 'url' => ['/logs/index'],],
 
                     ],
                 ];
 
                 $menuItems [] = ['label' => 'FRONTEND', 'url' => ['/../../frontend/web']];
+                //$menuItems [] = ['label' => 'ARTICULOS', 'url' => ['/articulo']];
                 $menuItems[] = [
                     'label' => 'MODULOS',
                     //'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('marc'),
@@ -70,7 +71,7 @@ AppAsset::register($this);
 
                         ['label' => 'Escuelas', 'url' => ['/escuelas'],],
 
-                        ['label' => 'Categor穩a', 'url' => ['/categoria'],],
+                        ['label' => 'Categoria', 'url' => ['/categoria'],],
 
                     ],
                 ];
